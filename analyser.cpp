@@ -317,7 +317,7 @@ void Analyser::on_actionAbout_QCustomPlot_triggered()
 {
     QMessageBox::information(this,
                              tr("About QCustomPlot"),
-                             tr("This program uses QCustomPlot, which is available under the GPL3+"));
+                             tr("This program uses QCustomPlot, which is available under the GPL3+\nFor more information see http://qcustomplot.com/"));
 }
 
 void Analyser::on_actionOpen_run_plotter_triggered()
