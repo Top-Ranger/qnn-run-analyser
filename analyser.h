@@ -44,6 +44,8 @@ private slots:
 
     void on_actionAbout_QCustomPlot_triggered();
 
+    void on_actionOpen_run_plotter_triggered();
+
 private:
     Ui::Analyser *ui;
 };

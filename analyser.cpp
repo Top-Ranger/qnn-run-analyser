@@ -19,6 +19,8 @@
 #include "analyser.h"
 #include "ui_analyser.h"
 
+#include "plotter.h"
+
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QDir>
@@ -316,4 +318,10 @@ void Analyser::on_actionAbout_QCustomPlot_triggered()
     QMessageBox::information(this,
                              tr("About QCustomPlot"),
                              tr("This program uses QCustomPlot, which is available under the GPL3+"));
+}
+
+void Analyser::on_actionOpen_run_plotter_triggered()
+{
+    Plotter plotter;
+    plotter.exec();
 }

@@ -185,6 +185,13 @@
     <addaction name="actionAbout_Qt"/>
     <addaction name="actionAbout_QCustomPlot"/>
    </widget>
+   <widget class="QMenu" name="menuTools">
+    <property name="title">
+     <string>Tools</string>
+    </property>
+    <addaction name="actionOpen_run_plotter"/>
+   </widget>
+   <addaction name="menuTools"/>
    <addaction name="menuAbout"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -194,6 +201,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionOpen_run_plotter"/>
+   <addaction name="separator"/>
    <addaction name="actionAbout"/>
    <addaction name="actionAbout_Qt"/>
    <addaction name="actionAbout_QCustomPlot"/>
@@ -212,6 +221,11 @@
   <action name="actionAbout_QCustomPlot">
    <property name="text">
     <string>About QCustomPlot</string>
+   </property>
+  </action>
+  <action name="actionOpen_run_plotter">
+   <property name="text">
+    <string>Open run plotter</string>
    </property>
   </action>
  </widget>

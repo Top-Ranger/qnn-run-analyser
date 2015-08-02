@@ -6,18 +6,21 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets printsupport
 
 TARGET = qnn-run-analyser
 TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        analyser.cpp
+        analyser.cpp \
+    plotter.cpp
 
-HEADERS  += analyser.h
+HEADERS  += analyser.h \
+    plotter.h
 
-FORMS    += analyser.ui
+FORMS    += analyser.ui \
+    plotter.ui
 
 OTHER_FILES += \
     LICENSE.GPL3 \
