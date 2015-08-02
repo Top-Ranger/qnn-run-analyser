@@ -20,4 +20,7 @@ HEADERS  += analyser.h
 FORMS    += analyser.ui
 
 OTHER_FILES += \
-    LICENSE.GPL3
+    LICENSE.GPL3 \
+    README.txt
+
+unix|win32: LIBS += -lqcustomplot
