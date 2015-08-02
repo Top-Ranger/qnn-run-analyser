@@ -64,6 +64,9 @@ void Analyser::on_toolButton_clicked()
     {
         ui->lineEdit->setText("");
     }
+    ui->lineEdit_2->setText("");
+    ui->lineEdit_3->setText("");
+    ui->lineEdit_4->setText("");
     ui->pushButton->setEnabled(ui->lineEdit->text() != "");
 }
 
@@ -270,6 +273,7 @@ void Analyser::on_pushButton_clicked()
         else
         {
             QTextStream stream(&file);
+            stream << "runs: " << runs << "\n";
             stream << "average_rounds: " << needed_rounds << "\n";
             stream << "average_best_fitness: " << fitness << "\n";
             stream << "average_average_fitness: " << average << "\n";
@@ -281,11 +285,11 @@ void Analyser::on_pushButton_clicked()
     {
         QCustomPlot plot;
         plot.addGraph();
-        plot.graph(0)->setPen(QPen(Qt::darkRed));
+        plot.graph(0)->setPen(QPen(Qt::red));
         plot.graph(0)->setName("Best fitness");
         plot.graph(0)->addToLegend();
         plot.addGraph();
-        plot.graph(1)->setPen(QPen(Qt::darkBlue));
+        plot.graph(1)->setPen(QPen(Qt::blue));
         plot.graph(1)->setName("Average fitness");
         plot.graph(1)->addToLegend();
         for(int i = 0; i < rounds; ++i)
@@ -293,7 +297,11 @@ void Analyser::on_pushButton_clicked()
             plot.graph(0)->addData(i, best_fitness[i]);
             plot.graph(1)->addData(i, average_fitness[i]);
         }
-        plot.rescaleAxes();
+        plot.xAxis->setLabel("Round");
+        plot.xAxis->setRange(0.0d, rounds-1);
+        plot.yAxis->setLabel("Fitness");
+        plot.yAxis->setRange(0.0d, 1.2d);
+        plot.legend->setVisible(true);
         plot.savePng(ui->lineEdit_4->text(), 500, 500);
     }
 
