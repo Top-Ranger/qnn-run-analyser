@@ -1,3 +1,21 @@
+/*
+ * Copyright (C) 2015 Marcus Soll
+ * This file is part of qnn-run-analyser.
+ *
+ * qnn-run-analyser is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * qnn-run-analyser is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with qnn-run-analyser. If not, see <http://www.gnu.org/licenses/>.
+ */
+
 #include "analyser.h"
 #include "ui_analyser.h"
 
@@ -20,7 +38,7 @@ void Analyser::on_actionAbout_triggered()
 {
     QMessageBox::information(this,
                              tr("About qnn-run-analyser"),
-                             tr("qnn-run-analyser is a simple tool that processes all csv-files in a folder from an qnn-ui run\nAuthor: Marcus Soll"));
+                             tr("qnn-run-analyser is a simple tool that processes all csv-files in a folder from an qnn-ui run\nAuthor: Marcus Soll\nLicense: GPL3+"));
 }
 
 void Analyser::on_actionAbout_Qt_triggered()

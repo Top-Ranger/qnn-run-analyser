@@ -18,3 +18,6 @@ SOURCES += main.cpp\
 HEADERS  += analyser.h
 
 FORMS    += analyser.ui
+
+OTHER_FILES += \
+    LICENSE.GPL3
