@@ -28,6 +28,7 @@
 #include <QTextStream>
 #include <QDebug>
 #include <qcustomplot.h>
+#include <QtCore/qmath.h>
 
 Analyser::Analyser(QWidget *parent) :
     QMainWindow(parent),
@@ -129,6 +130,10 @@ void Analyser::on_pushButton_clicked()
     double best_fitness[rounds];
     double average_fitness[rounds];
 
+    QList<double> l_best;
+    QList<double> l_average;
+    QList<double> l_rounds;
+
     QString s;
     QStringList l;
 
@@ -197,6 +202,9 @@ void Analyser::on_pushButton_clicked()
                     needed_rounds += i;
                     fitness += max_best_fitness;
                     average += max_average_fitness;
+                    l_best.append(max_best_fitness);
+                    l_average.append(max_average_fitness);
+                    l_rounds.append(i);
                 }
             }
             else
@@ -274,11 +282,45 @@ void Analyser::on_pushButton_clicked()
         }
         else
         {
+            double standard_derivation_best = 0.0d;
+            double standard_derivation_average = 0.0d;
+            double standard_derivation_rounds = 0.0d;
+
             QTextStream stream(&file);
             stream << "runs: " << runs << "\n";
             stream << "average_rounds: " << needed_rounds << "\n";
+            if(l_rounds.length() > 1)
+            {
+                foreach (double d, l_rounds)
+                {
+                    standard_derivation_rounds += qPow(d-needed_rounds , 2);
+                }
+                standard_derivation_rounds /= (l_rounds.length()-1);
+                standard_derivation_rounds = qSqrt(standard_derivation_rounds);
+                stream << "average_rounds_standard_deviation: " << standard_derivation_rounds << "\n";
+            }
             stream << "average_best_fitness: " << fitness << "\n";
+            if(l_best.length() > 1)
+            {
+                foreach (double d, l_best)
+                {
+                    standard_derivation_best += qPow(d-fitness , 2);
+                }
+                standard_derivation_best /= (l_best.length()-1);
+                standard_derivation_best = qSqrt(standard_derivation_best);
+                stream << "average_best_fitness_standard_deviation: " << standard_derivation_best << "\n";
+            }
             stream << "average_average_fitness: " << average << "\n";
+            if(l_average.length() > 1)
+            {
+                foreach (double d, l_average)
+                {
+                    standard_derivation_average += qPow(d-average , 2);
+                }
+                standard_derivation_average /= (l_average.length()-1);
+                standard_derivation_average = qSqrt(standard_derivation_average);
+                stream << "average_average_fitness_standard_deviation: " << standard_derivation_average << "\n";
+            }
         }
     }
 
