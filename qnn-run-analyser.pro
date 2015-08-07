@@ -12,15 +12,15 @@ TARGET = qnn-run-analyser
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        analyser.cpp \
-    plotter.cpp
+SOURCES += src/main.cpp \
+        src/analyser.cpp \
+    src/plotter.cpp
 
-HEADERS  += analyser.h \
-    plotter.h
+HEADERS  += src/analyser.h \
+    src/plotter.h
 
-FORMS    += analyser.ui \
-    plotter.ui
+FORMS    += src/analyser.ui \
+    src/plotter.ui
 
 OTHER_FILES += \
     LICENSE.GPL3 \
