@@ -47,7 +47,7 @@ void Plotter::on_plotButton_clicked()
     QFile file(ui->lineEdit->text());
     if(!file.open(QIODevice::ReadOnly))
     {
-        qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": can not open file";
+        qWarning() << "WARNING in " __FILE__ << __LINE__ << ": can not open file";
         QMessageBox::warning(this,
                              tr("Error"),
                              tr("Can not open file"));
@@ -57,7 +57,7 @@ void Plotter::on_plotButton_clicked()
     stream >> s;
     if(s != "round;best_fitness;average_fitness")
     {
-        qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": not a run result file";
+        qWarning() << "WARNING in " __FILE__ << __LINE__ << ": not a run result file";
         QMessageBox::warning(this,
                              tr("Error"),
                              tr("Not a ga run file"));

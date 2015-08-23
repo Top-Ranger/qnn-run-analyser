@@ -177,14 +177,14 @@ void Analyser::on_pushButton_clicked()
         QFile file(filename);
         if(!file.open(QIODevice::ReadOnly))
         {
-            qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": can not open file" << filename << file.errorString();
+            qWarning() << "WARNING in " __FILE__ << __LINE__ << ": can not open file" << filename << file.errorString();
             continue;
         }
         QTextStream stream(&file);
         stream >> s;
         if(s != "round;best_fitness;average_fitness")
         {
-            qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": not a run result file" << filename;
+            qWarning() << "WARNING in " __FILE__ << __LINE__ << ": not a run result file" << filename;
             continue;
         }
 
@@ -202,7 +202,7 @@ void Analyser::on_pushButton_clicked()
                 l = s.split(";");
                 if(l.length() != 3)
                 {
-                    qCritical() << "CRITICAL ERROR in " __FILE__ << " " << __LINE__ << ": Unknown entry length" << l.length() << "at" << filename << i << ":" << s;
+                    qCritical() << "CRITICAL ERROR in " __FILE__ << __LINE__ << ": Unknown entry length" << l.length() << "at" << filename << i << ":" << s;
                     QMessageBox::critical(this,
                                           tr("Error"),
                                           tr("Unknown entry length - can not process further"));
@@ -236,7 +236,7 @@ void Analyser::on_pushButton_clicked()
 
         if(!atEnd)
         {
-            qCritical() << "CRITICAL ERROR in " __FILE__ << " " << __LINE__ << ": Do not reached and at" << filename;
+            qCritical() << "CRITICAL ERROR in " __FILE__ << __LINE__ << ": Do not reached and at" << filename;
             QMessageBox::critical(this,
                                   tr("Error"),
                                   QString(tr("Did not reached end at %1 - maybe you have more rounds?").arg(filename)));
@@ -248,7 +248,7 @@ void Analyser::on_pushButton_clicked()
 
     if(runs == 0)
     {
-        qCritical() << "CRITICAL ERROR in " __FILE__ << " " << __LINE__ << ": Zero runs";
+        qCritical() << "CRITICAL ERROR in " __FILE__ << __LINE__ << ": Zero runs";
         QMessageBox::critical(this,
                               tr("Error"),
                               tr("The folder does not contain any runs"));
@@ -271,7 +271,7 @@ void Analyser::on_pushButton_clicked()
         QFile file(ui->lineEdit_2->text());
         if(!file.open(QIODevice::WriteOnly))
         {
-            qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": can not open file" << ui->lineEdit_2->text() << file.errorString();
+            qWarning() << "WARNING in " __FILE__ << __LINE__ << ": can not open file" << ui->lineEdit_2->text() << file.errorString();
             QMessageBox::critical(this,
                                   tr("Error"),
                                   QString(tr("Can not open %1").arg(ui->lineEdit_2->text())));
@@ -295,7 +295,7 @@ void Analyser::on_pushButton_clicked()
         QFile file(ui->lineEdit_3->text());
         if(!file.open(QIODevice::WriteOnly))
         {
-            qWarning() << "WARNING in " __FILE__ << " " << __LINE__ << ": can not open file" << ui->lineEdit_3->text() << file.errorString();
+            qWarning() << "WARNING in " __FILE__ << __LINE__ << ": can not open file" << ui->lineEdit_3->text() << file.errorString();
             QMessageBox::critical(this,
                                   tr("Error"),
                                   QString(tr("Can not open %1").arg(ui->lineEdit_2->text())));
