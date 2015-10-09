@@ -35,7 +35,7 @@ double calculate_standard_derivation(QList<double> &list, double &average)
 {
     if(list.length() > 1)
     {
-        double standard_derivation = 0.0d;
+        double standard_derivation = 0.0;
         foreach (double d, list)
         {
             standard_derivation += qPow(d-average, 2);
@@ -45,7 +45,7 @@ double calculate_standard_derivation(QList<double> &list, double &average)
     }
     else
     {
-        return 0.0d;
+        return 0.0;
     }
 }
 }
