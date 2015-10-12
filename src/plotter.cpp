@@ -88,7 +88,7 @@ void Plotter::on_plotButton_clicked()
     ui->plot->rescaleAxes();
     ui->plot->xAxis->setLabel("Round");
     ui->plot->yAxis->setLabel("Fitness");
-    ui->plot->yAxis->setRange(0.0d, 1.2d);
+    ui->plot->yAxis->setRange(0.0, 1.2);
     ui->plot->legend->setVisible(true);
     ui->plot->replot();
 

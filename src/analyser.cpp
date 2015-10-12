@@ -143,9 +143,9 @@ void Analyser::on_pushButton_clicked()
     int rounds = ui->spinBox->value()+1;
     int runs = 0;
 
-    double needed_rounds = 0.0d;
-    double fitness = 0.0d;
-    double average = 0.0d;
+    double needed_rounds = 0.0;
+    double fitness = 0.0;
+    double average = 0.0;
 
     double best_fitness[rounds];
     double average_fitness[rounds];
@@ -159,8 +159,8 @@ void Analyser::on_pushButton_clicked()
 
     for(int i = 0; i < rounds; ++i)
     {
-        best_fitness[i] = 0.0d;
-        average_fitness[i] = 0.0d;
+        best_fitness[i] = 0.0;
+        average_fitness[i] = 0.0;
     }
 
     QStringList filter;
@@ -188,8 +188,8 @@ void Analyser::on_pushButton_clicked()
             continue;
         }
 
-        double max_best_fitness = -1.0d;
-        double max_average_fitness = -1.0d;
+        double max_best_fitness = -1.0;
+        double max_average_fitness = -1.0;
         bool atEnd = false;
         ++runs;
 
