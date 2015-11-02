@@ -23,7 +23,9 @@ FORMS    += src/analyser.ui \
     src/plotter.ui
 
 OTHER_FILES += \
-    LICENSE.GPL3 \
-    README.txt
+    LICENSE.GPL3
 
 unix|win32: LIBS += -lqcustomplot
+
+DISTFILES += \
+    README

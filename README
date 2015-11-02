@@ -1,0 +1,19 @@
+qnn-run-analyser
+   by Marcus Soll
+
+-------------------------------------------------------------------------------
+
+qnn-run-analyser is a simple tool to extract information from q runs of 
+QNeuralNetworks. You can select a folder containing all runs and extract the
+following informations from it:
+ * average run (including plot)
+ * average rounds and fitness
+ * standard deviation of average round / fitness
+ 
+In addition to that a 'plotter' is included which can plot a single run.
+
+The tool is using QCustomPlot, which is available under the GPL3+. 
+For more information see http://qcustomplot.com/
+
+qnn-run-analyser is licensed under the terms of the GNU General Public License
+Version 3 or (at your option) any later version.
