@@ -90,6 +90,7 @@ void Analyser::on_toolButton_clicked()
     ui->lineEdit_2->setText("");
     ui->lineEdit_3->setText("");
     ui->lineEdit_4->setText("");
+    ui->lineEdit_5->setText("");
     ui->pushButton->setEnabled(ui->lineEdit->text() != "");
 }
 
@@ -135,6 +136,21 @@ void Analyser::on_toolButton_4_clicked()
     else
     {
         ui->lineEdit_4->setText("");
+    }
+}
+
+void Analyser::on_toolButton_5_clicked()
+{
+    QFileDialog dialog(this, tr("Set data output file"), "", "comma-seperated values (*.csv)");
+    dialog.setAcceptMode(QFileDialog::AcceptSave);
+    dialog.setDefaultSuffix("csv");
+    if(dialog.exec() == QFileDialog::Accepted && dialog.selectedFiles()[0].length() > 0)
+    {
+        ui->lineEdit_5->setText(dialog.selectedFiles()[0]);
+    }
+    else
+    {
+        ui->lineEdit_5->setText("");
     }
 }
 
@@ -338,6 +354,30 @@ void Analyser::on_pushButton_clicked()
         plot.savePng(ui->lineEdit_4->text(), 500, 500);
     }
 
+    // Write data
+    if(ui->lineEdit_5->text() != "")
+    {
+        QFile file(ui->lineEdit_5->text());
+        if(!file.open(QIODevice::WriteOnly))
+        {
+            qWarning() << "WARNING in " __FILE__ << __LINE__ << ": can not open file" << ui->lineEdit_5->text() << file.errorString();
+            QMessageBox::critical(this,
+                                  tr("Error"),
+                                  QString(tr("Can not open %1").arg(ui->lineEdit_5->text())));
+        }
+        else
+        {
+            QTextStream stream(&file);
+            stream << "rounds;best_fitness;average_fitness\n";
+            for(int i = 0; i < l_best.size(); ++i)
+            {
+                stream << l_rounds[i] << ";";
+                stream << l_best[i] << ";";
+                stream << l_average[i] << ";\n";
+            }
+        }
+    }
+
     QMessageBox::information(this,
                              tr("Finished"),
                              tr("Finished analysis :)"));
@@ -356,3 +396,4 @@ void Analyser::on_actionOpen_run_plotter_triggered()
     Plotter plotter;
     plotter.exec();
 }
+

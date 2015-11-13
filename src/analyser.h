@@ -40,6 +40,7 @@ private slots:
     void on_toolButton_2_clicked();
     void on_toolButton_3_clicked();
     void on_toolButton_4_clicked();
+    void on_toolButton_5_clicked();
     void on_pushButton_clicked();
     void on_actionAbout_QCustomPlot_triggered();
     void on_actionOpen_run_plotter_triggered();
