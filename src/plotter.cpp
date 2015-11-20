@@ -102,6 +102,6 @@ void Plotter::on_saveButton_clicked()
     dialog.setDefaultSuffix("png");
     if(dialog.exec() == QFileDialog::Accepted && dialog.selectedFiles()[0].length() > 0)
     {
-        ui->plot->saveJpg(dialog.selectedFiles()[0]);
+        ui->plot->savePng(dialog.selectedFiles()[0]);
     }
 }
